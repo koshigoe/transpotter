@@ -22,6 +22,7 @@ gem 'active_model_serializers', '0.10.0.rc5'
 # gem 'rack-cors'
 
 gem 'ridgepole', '0.6.5.beta'
+gem 'annotate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
