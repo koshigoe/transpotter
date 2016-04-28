@@ -45,6 +45,7 @@ GEM
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
+    ansi (1.5.0)
     arel (7.0.0)
     builder (3.2.2)
     byebug (8.2.5)
@@ -54,7 +55,14 @@ GEM
     ffi (1.9.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashie (3.4.3)
     i18n (0.7.0)
+    itamae (1.9.6)
+      ansi
+      hashie
+      schash (~> 0.1.0)
+      specinfra (>= 2.37.0, < 3.0.0)
+      thor
     json (1.8.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
@@ -69,6 +77,10 @@ GEM
     mime-types-data (3.2016.0221)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (3.1.1)
+    net-telnet (0.1.1)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -126,6 +138,13 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    schash (0.1.2)
+    sfl (2.2)
+    specinfra (2.57.1)
+      net-scp
+      net-ssh (>= 2.7, < 4.0)
+      net-telnet
+      sfl
     spring (1.7.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -152,6 +171,7 @@ DEPENDENCIES
   active_model_serializers (= 0.10.0.rc5)
   annotate
   byebug
+  itamae
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
@@ -163,4 +183,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
