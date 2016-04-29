@@ -1,0 +1,2 @@
+proftpd:
+  server_admin: root@localhost
