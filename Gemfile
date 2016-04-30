@@ -40,6 +40,7 @@ group :development do
   gem 'itamae', require: false, github: 'koshigoe/itamae', branch: 'add-ssh-config-option'
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
+  gem 'kramdown', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
