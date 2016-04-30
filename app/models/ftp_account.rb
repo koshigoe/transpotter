@@ -1,0 +1,2 @@
+class FtpAccount < ApplicationRecord
+end
