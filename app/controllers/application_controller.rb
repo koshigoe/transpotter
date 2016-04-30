@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :set_content_type
   before_action :validate_version
-  before_action :validate_data_type
 
   SUPPORTED_VERSIONS = %w(1.0).freeze
 

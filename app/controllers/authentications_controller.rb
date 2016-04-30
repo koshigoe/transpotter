@@ -1,4 +1,6 @@
 class AuthenticationsController < ApplicationController
+  before_action :validate_data_type, only: [:create]
+
   def create
     if user = User.find_by(username: create_params[:username])&.authenticate(create_params[:password])
       render json: user, serializer: AuthenticationSerializer
