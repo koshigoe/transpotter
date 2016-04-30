@@ -1,6 +1,6 @@
 proftpd:
   server_admin: root@localhost
-  sql_auth_types: Plaintext
+  sql_auth_types: OpenSSL
   sql_connect_info:
     - transpotter_development@192.168.33.200
     - postgres
