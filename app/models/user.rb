@@ -18,4 +18,14 @@
 
 class User < ApplicationRecord
   has_secure_password
+
+  def token
+    payload = {
+      sub: id.to_s,
+      aud: id.to_s,
+      iat: Time.current.to_i,
+      exp: 1.day.from_now.to_i,
+    }
+    JWT.encode payload, password_digest, 'HS256'
+  end
 end
