@@ -127,4 +127,44 @@ RSpec.describe User, :type => :model do
       it { is_expected.to eq false }
     end
   end
+
+  describe '.authenticate_by_token' do
+    subject { described_class.authenticate_by_token(token) }
+
+    let(:now) { Time.local(2015, 1, 1, 0, 0) }
+
+    around do |example|
+      travel_to now do
+        example.run
+      end
+    end
+
+    context 'valid token' do
+      let(:token) do
+        payload = {
+          sub: user.id.to_s,
+          aud: user.id.to_s,
+          iat: Time.current.to_i,
+          exp: 1.day.from_now.to_i,
+        }
+        JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
+      end
+
+      it { is_expected.to eq user }
+    end
+
+    context 'invalid token' do
+      let(:token) do
+        payload = {
+          sub: user.id.to_s,
+          aud: user.id.to_s,
+          iat: Time.current.to_i,
+          exp: 1.second.ago,
+        }
+        JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
+      end
+
+      it { is_expected.to eq nil }
+    end
+  end
 end

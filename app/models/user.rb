@@ -19,6 +19,15 @@
 class User < ApplicationRecord
   has_secure_password
 
+  def self.authenticate_by_token(token)
+    payload, _ = JWT.decode(token, Rails.application.secrets[:secret_key_base], true, algorithm: 'HS256')
+    user = find(payload['sub'])
+    user.verify_token!(token)
+    user
+  rescue
+    nil
+  end
+
   def token
     payload = {
       sub: id.to_s,
