@@ -61,3 +61,4 @@
 #   }
 
 server 'ftp', roles: %w(ftp), ssh_options: { config: '.ssh/vagrant' }
+server 'db', roles: %w(db), ssh_options: { config: '.ssh/vagrant' }
