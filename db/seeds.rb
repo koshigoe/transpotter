@@ -9,3 +9,5 @@
 require 'digest/sha2'
 
 FtpAccount.create_with(password: "{sha256}#{Base64.strict_encode64 Digest::SHA256.digest('password')}").find_or_create_by!(username: 'ftp-1')
+
+User.create_with(password: 'password', password_confirmation: 'password').find_or_create_by!(username: 'user1')
