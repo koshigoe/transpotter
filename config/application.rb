@@ -33,5 +33,7 @@ module Transpotter
     end
 
     ActiveModel::Serializer.config.adapter = :json_api
+    ActiveModel::Serializer.config.key_transform = :camel_lower
+    ActiveModel::Serializer.config.jsonapi_resource_type = :singular
   end
 end

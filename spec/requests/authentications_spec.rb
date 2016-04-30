@@ -12,7 +12,7 @@ RSpec.describe 'Authentications', type: :request do
     let(:valid_params) do
       {
         data: {
-          type: 'authentications',
+          type: 'authentication',
           attributes: {
             username: user.username,
             password: 'password',
@@ -29,7 +29,7 @@ RSpec.describe 'Authentications', type: :request do
         let(:data) do
           {
             id: user.id.to_s,
-            type: 'authentications',
+            type: 'authentication',
             attributes: {
               token: String
             }

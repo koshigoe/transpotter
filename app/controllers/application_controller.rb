@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   end
 
   def validate_data_type
-    return if params.require(:data).require(:type) == controller_name.pluralize
+    return if params.require(:data).require(:type) == controller_name.singularize
     render json: { errors: [{ title: 'Invalid type', status: 400 }] }, status: 400
   end
 end
