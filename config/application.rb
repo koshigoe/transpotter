@@ -31,5 +31,7 @@ module Transpotter
       g.active_record migration: false
       g.test_framework :rspec, controller_specs: false
     end
+
+    ActiveModel::Serializer.config.adapter = :json_api
   end
 end
