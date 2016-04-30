@@ -20,5 +20,11 @@
 require 'rails_helper'
 
 RSpec.describe FtpAccount, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#password=' do
+    subject { FtpAccount.new(password: 'password') }
+
+    it 'is set hashed password to password_digest' do
+      expect(subject.password_digest).to match /\A\{sha256\}[a-zA-Z0-9\+\/=]+\z/
+    end
+  end
 end

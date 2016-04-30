@@ -17,5 +17,11 @@
 # **`updated_at`**       | `datetime`         | `not null`
 #
 
+require 'digest/sha2'
+require 'base64'
+
 class FtpAccount < ApplicationRecord
+  def password=(raw_password)
+    self.password_digest = "{sha256}#{Base64.strict_encode64(Digest::SHA256.digest(raw_password))}"
+  end
 end
