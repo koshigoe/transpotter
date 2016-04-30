@@ -1,3 +1,4 @@
 class AuthenticationSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :token
+  type 'authentications'
 end
