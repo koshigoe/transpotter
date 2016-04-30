@@ -8,6 +8,7 @@ end
 
 package 'epel-release'
 package 'proftpd'
+package 'proftpd-postgresql'
 
 service 'proftpd' do
   action [:enable, :start]

@@ -1,4 +1,12 @@
 shared_examples_for 'ProFTPD' do
+  describe package 'proftpd' do
+    it { should be_installed }
+  end
+
+  describe package 'proftpd-postgresql' do
+    it { should be_installed }
+  end
+
   describe service 'proftpd' do
     it { should be_enabled }
     it { should be_running }
