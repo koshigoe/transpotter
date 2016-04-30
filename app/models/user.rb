@@ -26,7 +26,7 @@ class User < ApplicationRecord
       iat: Time.current.to_i,
       exp: 1.day.from_now.to_i,
     }
-    JWT.encode payload, password_digest, 'HS256'
+    JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
   end
 
   def verify_token(token)
@@ -37,7 +37,7 @@ class User < ApplicationRecord
       verify_sub: true,
       sub: id.to_s,
     }
-    JWT.decode(token, password_digest, true, verify_options)
+    JWT.decode(token, Rails.application.secrets[:secret_key_base], true, verify_options)
     true
   rescue
     false

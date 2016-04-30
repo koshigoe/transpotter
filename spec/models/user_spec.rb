@@ -33,7 +33,7 @@ RSpec.describe User, :type => :model do
     end
 
     it 'is JWT token' do
-      payload, header = JWT.decode(subject, user.password_digest)
+      payload, header = JWT.decode(subject, Rails.application.secrets[:secret_key_base])
       expect(header).to eq({ 'typ' => 'JWT', 'alg' => 'HS256' })
 
       expected_payload = {
@@ -65,7 +65,7 @@ RSpec.describe User, :type => :model do
           iat: Time.current.to_i,
           exp: 1.day.from_now.to_i,
         }
-        JWT.encode payload, user.password_digest, 'HS256'
+        JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
       end
 
       it { is_expected.to eq true }
@@ -79,7 +79,7 @@ RSpec.describe User, :type => :model do
           iat: Time.current.to_i,
           exp: 1.second.ago,
         }
-        JWT.encode payload, user.password_digest, 'HS256'
+        JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
       end
 
       it { is_expected.to eq false }
