@@ -29,6 +29,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.0'
   gem 'serverspec', require: false
+  gem 'pry-rails'
 end
 
 group :development do

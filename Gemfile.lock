@@ -64,6 +64,7 @@ GEM
     capistrano-rails (1.1.6)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    coderay (1.1.1)
     concurrent-ruby (1.0.1)
     diff-lcs (1.2.5)
     erubis (2.7.0)
@@ -101,6 +102,12 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (3.4.0)
     rack (2.0.0.alpha)
       json
@@ -168,6 +175,7 @@ GEM
       rspec-its
       specinfra (~> 2.53)
     sfl (2.2)
+    slop (3.6.0)
     specinfra (2.57.1)
       net-scp
       net-ssh (>= 2.7, < 4.0)
@@ -207,6 +215,7 @@ DEPENDENCIES
   itamae
   listen (~> 3.0.5)
   pg (~> 0.18)
+  pry-rails
   puma (~> 3.0)
   rails (>= 5.0.0.beta4, < 5.1)
   ridgepole (= 0.6.5.beta)
