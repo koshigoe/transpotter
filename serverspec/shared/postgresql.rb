@@ -25,6 +25,7 @@ shared_examples_for 'PostgreSQL' do
     it { should be_owned_by 'postgres' }
     it { should be_grouped_into 'postgres' }
     it { should be_mode 600 }
+    its(:content) { should match '^host all all 192.168.33.0/24 trust' }
   end
 
   describe file '/var/lib/pgsql/9.5/data/pg_ident.conf' do
@@ -46,5 +47,6 @@ shared_examples_for 'PostgreSQL' do
     it { should be_owned_by 'postgres' }
     it { should be_grouped_into 'postgres' }
     it { should be_mode 600 }
+    its(:content) { should match 'listen_addresses = \'\*\'' }
   end
 end
