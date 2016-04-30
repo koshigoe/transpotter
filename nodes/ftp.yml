@@ -1,2 +1,9 @@
 proftpd:
   server_admin: root@localhost
+  sql_auth_types: Plaintext
+  sql_connect_info:
+    - transpotter_development@192.168.33.200
+    - postgres
+  sql_default_uid: 1000
+  sql_default_gid: 1000
+  sql_default_homedir: /home/vagrant/

@@ -1,7 +1,12 @@
 node.validate! do
   {
     proftpd: {
-      server_admin: string
+      server_admin: string,
+      sql_auth_types: string,
+      sql_connect_info: array_of(string),
+      sql_default_uid: integer,
+      sql_default_gid: integer,
+      sql_default_homedir: string,
     }
   }
 end
