@@ -29,7 +29,7 @@ class User < ApplicationRecord
     JWT.encode payload, Rails.application.secrets[:secret_key_base], 'HS256'
   end
 
-  def verify_token(token)
+  def verify_token!(token)
     verify_options = {
       algorithm: 'HS256',
       verify_expiration: true,
@@ -39,6 +39,10 @@ class User < ApplicationRecord
     }
     JWT.decode(token, Rails.application.secrets[:secret_key_base], true, verify_options)
     true
+  end
+
+  def verify_token(token)
+    verify_token!(token)
   rescue
     false
   end
