@@ -14,6 +14,8 @@ service 'proftpd' do
 end
 
 template '/etc/proftpd.conf' do
+  owner 'root'
+  group 'root'
   mode '640'
   notifies :restart, 'service[proftpd]'
 end
