@@ -62,6 +62,7 @@ GEM
     ansi (1.5.0)
     arel (7.0.0)
     awesome_print (1.6.1)
+    bcrypt (3.1.11)
     builder (3.2.2)
     byebug (8.2.5)
     capistrano (3.5.0)
@@ -226,6 +227,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.10.0.rc5)
   annotate
+  bcrypt (~> 3.1.7)
   byebug
   capistrano (~> 3.1)
   capistrano-rails (~> 1.1)
