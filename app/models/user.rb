@@ -28,4 +28,18 @@ class User < ApplicationRecord
     }
     JWT.encode payload, password_digest, 'HS256'
   end
+
+  def verify_token(token)
+    verify_options = {
+      algorithm: 'HS256',
+      verify_expiration: true,
+      verify_iat: true,
+      verify_sub: true,
+      sub: id.to_s,
+    }
+    JWT.decode(token, password_digest, true, verify_options)
+    true
+  rescue
+    false
+  end
 end
