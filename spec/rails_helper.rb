@@ -51,4 +51,5 @@ RSpec.configure do |config|
 
   config.include RSpec::JsonMatcher
   config.include ActiveSupport::Testing::TimeHelpers
+  config.include FactoryGirl::Syntax::Methods
 end
