@@ -7,3 +7,10 @@ package 'nginx'
 service 'nginx' do
   action [:enable, :start]
 end
+
+template '/etc/nginx/conf.d/default.conf' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :restart, 'service[nginx]'
+end
