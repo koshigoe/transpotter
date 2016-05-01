@@ -34,6 +34,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :default_env, { path: '/usr/pgsql-9.5/bin:$PATH' }
 
 set :migration_role, :api
+set :puma_role, :api
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
@@ -47,7 +48,7 @@ namespace :deploy do
   before 'deploy:starting', 'deploy:setup_deploy_to'
 
   task :restart do
-    on roles(:api), in: :groups, limit: 1, wait: 15 do
+    on release_roles(:api), in: :groups, limit: 1, wait: 15 do
       within current_path do
         invoke 'puma:restart'
       end
