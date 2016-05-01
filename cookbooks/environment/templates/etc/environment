@@ -1,1 +1,4 @@
 SECRET_KEY_BASE=<%= node[:secrets][:secret_key_base] %>
+AWS_REGION=ap-northeast-1
+AWS_ACCESS_KEY_ID=<%= node[:secrets][:aws_access_key_id] %>
+AWS_SECRET_ACCESS_KEY=<%= node[:secrets][:aws_secret_access_key] %>
