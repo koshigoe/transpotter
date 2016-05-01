@@ -7,3 +7,5 @@ proftpd:
   sql_default_uid: 1000
   sql_default_gid: 1000
   sql_default_homedir: /home/vagrant/
+transpotter:
+  s3_bucket: test-transpotter
