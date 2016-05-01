@@ -23,8 +23,15 @@ RSpec.describe FtpAccount, :type => :model do
   describe 'validation' do
     subject { build(:ftp_account) }
 
-    describe 'password_digest' do
-      it { is_expected.to validate_presence_of(:password_digest) }
+    describe 'password' do
+      context 'on create' do
+        it { is_expected.to validate_presence_of(:password) }
+      end
+
+      context 'on update' do
+        subject { create(:ftp_account) }
+        it { is_expected.to allow_value('').for(:password) }
+      end
     end
 
     describe 'uid' do
@@ -42,8 +49,15 @@ RSpec.describe FtpAccount, :type => :model do
     end
   end
 
-  describe '#password=' do
-    subject { FtpAccount.new(password: 'password') }
+  describe '#before_create' do
+    subject do
+      FtpAccount.create!(
+        password: 'password',
+        uid: Rails.configuration.x.ftp_account.default_uid,
+        gid: Rails.configuration.x.ftp_account.default_gid,
+        homedir: Rails.configuration.x.ftp_account.default_homedir,
+      )
+    end
 
     it 'is set hashed password to password_digest' do
       expect(subject.password_digest).to match /\A\{sha256\}[a-zA-Z0-9\+\/=]+\z/

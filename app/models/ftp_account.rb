@@ -21,18 +21,15 @@ require 'digest/sha2'
 require 'base64'
 
 class FtpAccount < ApplicationRecord
-  validates :password_digest, presence: true
+  validates :password, presence: true, on: :create
   validates :uid, presence: true, numericality: { allow_blank: true }
   validates :gid, presence: true, numericality: { allow_blank: true }
   validates :homedir, presence: true
 
   attr_readonly :username
+  attr_accessor :password
 
-  after_create do
-    update!(username: "ftp-#{id}")
-  end
-
-  def password=(raw_password)
-    self.password_digest = "{sha256}#{Base64.strict_encode64(Digest::SHA256.digest(raw_password))}"
+  before_save do
+    self.password_digest = "{sha256}#{Base64.strict_encode64(Digest::SHA256.digest(password))}" if password.present?
   end
 end
