@@ -1,6 +1,6 @@
 class FtpAccountsController < ApplicationController
   before_action :authenticate
-  before_action :validate_data_type, only: [:create, :update]
+  before_action :validate_data_type, only: [:create, :update, :destroy]
   before_action :set_ftp_account, only: [:show, :update]
 
   def show
@@ -20,6 +20,11 @@ class FtpAccountsController < ApplicationController
   def update
     @ftp_account.update!(password: update_params[:password])
     render json: @ftp_account
+  end
+
+  def destroy
+    FtpAccount.find_by(id: params.require(:data).require(:id))&.destroy
+    render json: { data: nil }
   end
 
   private
