@@ -20,6 +20,34 @@
 require 'rails_helper'
 
 RSpec.describe FtpAccount, :type => :model do
+  describe 'validation' do
+    subject { build(:ftp_account) }
+
+    describe 'username' do
+      it { is_expected.to validate_presence_of(:username) }
+      it { is_expected.to allow_value('ftp-1234').for(:username) }
+      it { is_expected.to have_readonly_attribute(:username) }
+    end
+
+    describe 'password_digest' do
+      it { is_expected.to validate_presence_of(:password_digest) }
+    end
+
+    describe 'uid' do
+      it { is_expected.to validate_presence_of(:uid) }
+      it { is_expected.to validate_numericality_of(:uid) }
+    end
+
+    describe 'gid' do
+      it { is_expected.to validate_presence_of(:gid) }
+      it { is_expected.to validate_numericality_of(:gid) }
+    end
+
+    describe 'homedir' do
+      it { is_expected.to validate_presence_of(:homedir) }
+    end
+  end
+
   describe '#password=' do
     subject { FtpAccount.new(password: 'password') }
 
