@@ -13,8 +13,12 @@ module Transpotter
     desc 'relay FROM TO', 'Relay file to S3.'
     option :environment, default: 'production', type: :string, aliases: :e
     def relay(from, to)
-      Dotenv.load('.env.local', ".env.#{options[:environment]}", '.env')
-      run "aws s3 cp #{from} s3://#{ENV['TRANSPOTTER_S3_BUCKET']}/#{to}"
+      Dotenv.overload(
+        File.expand_path('../.env.local', __dir__),
+        File.expand_path("../.env.#{options[:environment]}", __dir__),
+        File.expand_path('../.env', __dir__)
+      )
+      run "/usr/bin/aws s3 cp #{from} s3://#{ENV['TRANSPOTTER_S3_BUCKET']}/#{to}"
       remove_file from
     end
   end
