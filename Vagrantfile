@@ -84,4 +84,9 @@ Vagrant.configure(2) do |config|
     db.vm.network 'private_network', ip: '192.168.33.200'
     db.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
   end
+
+  config.vm.define 'api' do |api|
+    api.vm.network 'private_network', ip: '192.168.33.201'
+    api.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
+  end
 end
