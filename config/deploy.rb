@@ -33,6 +33,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for default_env is {}
 set :default_env, { path: '/usr/pgsql-9.5/bin:$PATH' }
 
+set :migration_role, :api
+
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
