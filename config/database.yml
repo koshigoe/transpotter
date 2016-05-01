@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: transpotter_production
-  username: transpotter
-  password: <%= ENV['TRANSPOTTER_DATABASE_PASSWORD'] %>
+  url: postgres://postgres@192.168.33.200/transpotter_development
