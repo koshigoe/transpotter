@@ -63,6 +63,8 @@ GEM
     arel (7.0.0)
     awesome_print (1.6.1)
     bcrypt (3.1.11)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.5)
     capistrano (3.5.0)
@@ -80,6 +82,7 @@ GEM
       capistrano-bundler (~> 1.1)
     coderay (1.1.1)
     concurrent-ruby (1.0.1)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     factory_girl (4.7.0)
@@ -121,8 +124,14 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     puma (3.4.0)
     rack (2.0.0.alpha)
       json
@@ -239,7 +248,9 @@ DEPENDENCIES
   kramdown
   listen (~> 3.0.5)
   pg (~> 0.18)
+  pry-byebug
   pry-rails
+  pry-stack_explorer
   puma (~> 3.0)
   rails (>= 5.0.0.beta4, < 5.1)
   ridgepole (= 0.6.5.beta)

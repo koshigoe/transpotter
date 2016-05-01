@@ -31,6 +31,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'serverspec', require: false
   gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
   gem 'factory_girl_rails'
   gem 'rspec-json_matcher'
 end
