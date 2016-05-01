@@ -11,12 +11,13 @@ module Transpotter
     include Thor::Actions
 
     desc 'relay FROM TO', 'Relay file to S3.'
+    option :environment, default: 'production', type: :string, aliases: :e
     def relay(from, to)
+      Dotenv.load('.env.local', ".env.#{options[:environment]}", '.env')
       run "aws s3 cp #{from} s3://#{ENV['TRANSPOTTER_S3_BUCKET']}/#{to}"
       run "rm -f #{from}"
     end
   end
 end
 
-Dotenv.load('.env.local', ".env.#{ENV['RAILS_ENV']}", '.env')
 Transpotter::CLI.start(ARGV)
