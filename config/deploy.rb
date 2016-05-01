@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-set :repo_url, 'git@example.com:me/my_repo.git'
 set :application, 'app'
+set :repo_url, 'https://github.com/koshigoe/transpotter.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
