@@ -102,6 +102,8 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.4.4)
     i18n (0.7.0)
+    itamae-secrets (0.1.0)
+      thor
     json (1.8.3)
     jwt (1.5.4)
     kramdown (1.10.0)
@@ -253,6 +255,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   itamae!
+  itamae-secrets
   jwt
   kramdown
   listen (~> 3.0.5)

@@ -44,6 +44,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'itamae', require: false, github: 'koshigoe/itamae', branch: 'add-ssh-config-option'
+  gem 'itamae-secrets', require: false
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'kramdown', require: false
