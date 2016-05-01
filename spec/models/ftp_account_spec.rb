@@ -75,7 +75,11 @@ RSpec.describe FtpAccount, :type => :model do
     end
 
     it 'set username' do
-      expect(subject.username).to eq "ftp-#{subject.id}"
+      expect(subject.reload.username).to eq "ftp-#{subject.id}"
+    end
+
+    it 'is clean username' do
+      expect(subject.username_changed?).to eq false
     end
   end
 end

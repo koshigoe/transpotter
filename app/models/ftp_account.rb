@@ -34,6 +34,8 @@ class FtpAccount < ApplicationRecord
   end
 
   after_create do
-    update!(username: "ftp-#{id}")
+    self.class.where(id: id).update_all('username = CONCAT(\'ftp-\', id)')
+    self.username = "ftp-#{id}"
+    clear_attribute_changes([:username])
   end
 end
