@@ -272,6 +272,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1)
   spring
   spring-watcher-listen (~> 2.0.0)
+  thor
   tzinfo-data
 
 BUNDLED WITH
