@@ -32,4 +32,8 @@ class FtpAccount < ApplicationRecord
   before_save do
     self.password_digest = "{sha256}#{Base64.strict_encode64(Digest::SHA256.digest(password))}" if password.present?
   end
+
+  after_create do
+    update!(username: "ftp-#{id}")
+  end
 end
