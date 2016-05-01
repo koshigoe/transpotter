@@ -18,3 +18,4 @@
 
 /secret/keys
 /secret/values/aws_*
+/.env*
