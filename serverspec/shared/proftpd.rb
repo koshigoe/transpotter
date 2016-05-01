@@ -19,5 +19,7 @@ shared_examples_for 'ProFTPD' do
     it { should be_mode 640 }
     its(:content) { should match '^ServerName\s+"Transpotter"' }
     its(:content) { should match '^ServerAdmin\s+root@localhost' }
+    its(:content) { should match '^HiddenStores\s+on' }
+    its(:content) { should match '^DeleteAbortedStores\s+on' }
   end
 end
