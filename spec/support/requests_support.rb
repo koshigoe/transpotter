@@ -26,6 +26,13 @@ shared_examples_for 'HTTP 404 Not Found' do
   end
 end
 
+shared_examples_for 'HTTP 422 Unprocessable Entity' do
+  it 'is 422 Unprocessable Entity' do
+    subject
+    expect(response).to have_http_status 422
+  end
+end
+
 shared_examples_for 'JSON API with /data' do
   it 'includes Content-Type: application/vnd.api+json' do
     subject
