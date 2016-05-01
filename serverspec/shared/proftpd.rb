@@ -21,5 +21,6 @@ shared_examples_for 'ProFTPD' do
     its(:content) { should match '^ServerAdmin\s+root@localhost' }
     its(:content) { should match '^HiddenStores\s+on' }
     its(:content) { should match '^DeleteAbortedStores\s+on' }
+    its(:content) { should match '^AllowOverwrite\s+no' }
   end
 end
