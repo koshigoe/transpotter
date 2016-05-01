@@ -46,6 +46,15 @@ namespace :deploy do
   end
   before 'deploy:starting', 'deploy:setup_deploy_to'
 
+  task :restart do
+    on roles(:api), in: :groups, limit: 1, wait: 15 do
+      within current_path do
+        invoke 'puma:restart'
+      end
+    end
+  end
+  after 'deploy:publishing', 'deploy:restart'
+
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
