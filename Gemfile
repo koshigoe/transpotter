@@ -46,6 +46,7 @@ group :development do
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'kramdown', require: false
+  gem 'capistrano3-puma'
 end
 
 group :test do
