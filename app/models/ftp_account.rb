@@ -7,7 +7,7 @@
 # Name                   | Type               | Attributes
 # ---------------------- | ------------------ | ---------------------------
 # **`id`**               | `integer`          | `not null, primary key`
-# **`username`**         | `string`           | `not null`
+# **`username`**         | `string`           |
 # **`password_digest`**  | `string`           | `not null`
 # **`uid`**              | `integer`          | `not null`
 # **`gid`**              | `integer`          | `not null`

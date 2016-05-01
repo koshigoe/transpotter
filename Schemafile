@@ -1,5 +1,5 @@
 create_table "ftp_accounts", force: :cascade do |t|
-  t.string   "username",                     null: false
+  t.string   "username"
   t.string   "password_digest",              null: false
   t.integer  "uid",                          null: false
   t.integer  "gid",                          null: false
