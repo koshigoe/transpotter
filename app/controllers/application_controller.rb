@@ -15,6 +15,17 @@ class ApplicationController < ActionController::API
     render status: 404, json: { errors: [{ title: "#{controller_name.singularize.humanize} not found", status: 404 }] }
   end
 
+  rescue_from ActiveRecord::RecordInvalid do |e|
+    errors = e.record.errors.keys.inject([]) do |res, key|
+      pointer_key = key.to_s.split('.').last
+      res += e.record.errors.full_messages_for(key).map do |msg|
+        { title: msg, status: 422, source: { pointer: "/data/attributes/#{pointer_key}" } }
+      end
+      res
+    end
+    render json: { errors: errors }, status: 422
+  end
+
   def current_user
     @current_user
   end

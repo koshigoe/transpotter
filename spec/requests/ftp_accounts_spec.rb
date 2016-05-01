@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'FtpAccounts', type: :request do
+  let(:user) { create(:user) }
+
   describe 'GET /v1.0/ftp-accounts/:id' do
     subject do
       get "/v1.0/ftp-accounts/#{ftp_account.id}",
@@ -8,7 +10,6 @@ RSpec.describe 'FtpAccounts', type: :request do
     end
 
     let(:ftp_account) { create(:ftp_account) }
-    let(:user) { create(:user) }
 
     context 'successful' do
       it_behaves_like 'HTTP 200 OK'
@@ -42,6 +43,96 @@ RSpec.describe 'FtpAccounts', type: :request do
         it_behaves_like 'JSON API with /errors' do
           let(:errors) do
             [{ title: 'Ftp account not found', status: 404 }]
+          end
+        end
+      end
+    end
+  end
+
+  describe 'POST /v1.0/ftp-accounts' do
+    subject do
+      post '/v1.0/ftp-accounts',
+           params: params.to_json,
+           headers: {
+             'Content-Type' => 'application/vnd.api+json',
+             'Authorization' => "Token #{user.token}"
+           }
+    end
+
+    let(:valid_params) do
+      {
+        data: {
+          type: 'ftpAccount',
+          attributes: {
+            password: 'password'
+          }
+        }
+      }
+    end
+
+    context 'successful' do
+      let(:params) { valid_params }
+
+      it_behaves_like 'HTTP 200 OK'
+      it_behaves_like 'JSON API with /data' do
+        let(:data) do
+          {
+            id: /\A\d+\z/,
+            type: 'ftpAccount',
+            attributes: {
+              username: /\Aftp-\d+\z/,
+              uid: 1000,
+              gid: 1000,
+              homedir: '/home/vagrant',
+              shell: ''
+            }
+          }
+        end
+      end
+
+      it 'created FtpAccount' do
+        expect { subject }.to change(FtpAccount, :count).by(1)
+      end
+    end
+
+    context 'error' do
+      context 'unauthorized' do
+        subject { post '/v1.0/ftp-accounts' }
+        it_behaves_like 'Unauthorized'
+      end
+
+      context 'wrong /data/type' do
+        let(:params) do
+          valid_params.tap do |x|
+            x[:data][:type] = 'invalid'
+          end
+        end
+
+        it_behaves_like 'HTTP 400 Bad Request'
+        it_behaves_like 'JSON API with /errors' do
+          let(:errors) do
+            [{ title: 'Invalid type', status: 400 }]
+          end
+        end
+      end
+
+      context 'empty password' do
+        let(:params) do
+          valid_params.tap do |x|
+            x[:data][:attributes][:password] = ''
+          end
+        end
+
+        it_behaves_like 'HTTP 422 Unprocessable Entity'
+        it_behaves_like 'JSON API with /errors' do
+          let(:errors) do
+            [
+              {
+                status: 422,
+                title: 'Password can\'t be blank',
+                source: { pointer: '/data/attributes/password' }
+              }
+            ]
           end
         end
       end
