@@ -47,6 +47,13 @@ namespace :deploy do
   end
   before 'deploy:starting', 'deploy:setup_deploy_to'
 
+  task :env do
+    on release_roles(:all) do
+      execute :cp, '/etc/environment', "#{release_path}/.env.#{fetch(:rails_env)}"
+    end
+  end
+  before 'deploy:updated', 'deploy:env'
+
   task :restart do
     on release_roles(:api), in: :groups, limit: 1, wait: 15 do
       within current_path do
