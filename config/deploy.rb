@@ -39,6 +39,12 @@ set :migration_role, :api
 # set :keep_releases, 5
 
 namespace :deploy do
+  task :setup_deploy_to do
+    on release_roles(:all) do |host|
+      sudo "install --owner=#{host.user} --mode=0755 -d #{deploy_to}" if test("[ ! -d #{deploy_to} ]")
+    end
+  end
+  before 'deploy:starting', 'deploy:setup_deploy_to'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
