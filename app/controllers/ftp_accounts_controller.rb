@@ -1,7 +1,7 @@
 class FtpAccountsController < ApplicationController
   before_action :authenticate
-  before_action :validate_data_type, only: [:create]
-  before_action :set_ftp_account, only: [:show]
+  before_action :validate_data_type, only: [:create, :update]
+  before_action :set_ftp_account, only: [:show, :update]
 
   def show
     render json: @ftp_account
@@ -17,7 +17,9 @@ class FtpAccountsController < ApplicationController
     render json: ftp_account
   end
 
-  def put
+  def update
+    @ftp_account.update!(password: update_params[:password])
+    render json: @ftp_account
   end
 
   private
@@ -27,6 +29,10 @@ class FtpAccountsController < ApplicationController
   end
 
   def create_params
+    params.require(:data).require(:attributes).permit(:password)
+  end
+
+  def update_params
     params.require(:data).require(:attributes).permit(:password)
   end
 end

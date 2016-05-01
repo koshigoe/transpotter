@@ -19,8 +19,7 @@
 
 FactoryGirl.define do
   factory :ftp_account do
-    sequence(:username) { |n| "ftp-#{n}" }
-    password "{sha256}#{Base64.strict_encode64 Digest::SHA256.digest('password')}"
+    password 'password'
     uid 1000
     gid 1000
     homedir '/home/vagrant'
