@@ -1,24 +1,17 @@
-# README
+Transpotte
+====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Setup
+----
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ bundle install
+$ vagrant up
+$ itamae-secrets newkey --base=./secret --method=aes-rando
+$ itamae-secrets set --base=./secret secret_key_base $(rake secret)
+$ itamae-secrets set --base=./secret aws_access_key_id <AWS ACCESS KEY ID>
+$ itamae-secrets set --base=./secret aws_secret_access_key <AWS SECRET ACCESS KEY>
+$ cap vagrant itamae
+$ cap vagrant serverspec
+$ cap vagrant deploy
+```
