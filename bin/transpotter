@@ -15,7 +15,7 @@ module Transpotter
     def relay(from, to)
       Dotenv.load('.env.local', ".env.#{options[:environment]}", '.env')
       run "aws s3 cp #{from} s3://#{ENV['TRANSPOTTER_S3_BUCKET']}/#{to}"
-      run "rm -f #{from}"
+      remove_file from
     end
   end
 end
