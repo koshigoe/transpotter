@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/koshigoe/itamae.git
-  revision: 143064737a217d0961d0787de359c227d892b74b
+  revision: b4de94bdeb3d605a121b3efb5279cb41c191f714
   branch: add-ssh-config-option
   specs:
     itamae (1.9.7.pre)
