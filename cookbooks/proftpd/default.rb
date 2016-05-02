@@ -7,6 +7,8 @@ node.validate! do
       sql_default_uid: integer,
       sql_default_gid: integer,
       sql_default_homedir: string,
+      virtual_host_ftp: string,
+      virtual_host_sftp: string
     }
   }
 end
