@@ -1,0 +1,2 @@
+class SFTPAccount < ApplicationRecord
+end
