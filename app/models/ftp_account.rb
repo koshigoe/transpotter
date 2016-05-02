@@ -18,5 +18,5 @@
 #
 
 class FTPAccount < ApplicationRecord
-  include ProFTPDAccount
+  include ProFTPDAccountModel
 end

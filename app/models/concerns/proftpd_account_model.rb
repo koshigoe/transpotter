@@ -1,8 +1,7 @@
 require 'digest/sha2'
 require 'base64'
 
-# proftpd_account
-module ProFTPDAccount
+module ProFTPDAccountModel
   extend ActiveSupport::Concern
 
   included do
