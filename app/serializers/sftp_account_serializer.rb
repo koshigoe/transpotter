@@ -1,3 +1,3 @@
 class SFTPAccountSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :username, :uid, :gid, :homedir, :shell
 end
