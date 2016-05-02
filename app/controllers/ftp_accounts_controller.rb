@@ -10,9 +10,9 @@ class FTPAccountsController < ApplicationController
   def create
     ftp_account = FTPAccount.create!(
       password: create_params[:password],
-      uid: Rails.configuration.x.ftp_account.default_uid,
-      gid: Rails.configuration.x.ftp_account.default_gid,
-      homedir: Rails.configuration.x.ftp_account.default_homedir,
+      uid: Rails.configuration.x.proftpd_account.default_uid,
+      gid: Rails.configuration.x.proftpd_account.default_gid,
+      homedir: Rails.configuration.x.proftpd_account.default_homedir,
     )
     render json: ftp_account
   end

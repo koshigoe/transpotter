@@ -36,8 +36,8 @@ module Transpotter
     ActiveModel::Serializer.config.key_transform = :camel_lower
     ActiveModel::Serializer.config.jsonapi_resource_type = :singular
 
-    config.x.ftp_account.default_uid = 1000
-    config.x.ftp_account.default_gid = 1000
-    config.x.ftp_account.default_homedir = '/home/vagrant'
+    config.x.proftpd_account.default_uid = 1000
+    config.x.proftpd_account.default_gid = 1000
+    config.x.proftpd_account.default_homedir = '/home/vagrant'
   end
 end

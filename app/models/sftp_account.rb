@@ -18,4 +18,5 @@
 #
 
 class SFTPAccount < ApplicationRecord
+  include ProFTPDAccount
 end
