@@ -25,3 +25,10 @@ template '/etc/proftpd.conf' do
   mode '640'
   notifies :restart, 'service[proftpd]'
 end
+
+file '/etc/ssh/ssh_host_rsa_key' do
+  action :nothing
+  mode '0600'
+  owner 'root'
+  group 'ssh_keys'
+end
