@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'FtpAccounts', type: :request do
+RSpec.describe 'FTPAccounts', type: :request do
   let(:user) { create(:user) }
 
   describe 'GET /v1.0/ftp-accounts/:id' do
@@ -42,7 +42,7 @@ RSpec.describe 'FtpAccounts', type: :request do
         it_behaves_like 'HTTP 404 Not Found'
         it_behaves_like 'JSON API with /errors' do
           let(:errors) do
-            [{ title: 'Ftp account not found', status: 404 }]
+            [{ title: 'FTP account not found', status: 404 }]
           end
         end
       end
@@ -90,8 +90,8 @@ RSpec.describe 'FtpAccounts', type: :request do
         end
       end
 
-      it 'created FtpAccount' do
-        expect { subject }.to change(FtpAccount, :count).by(1)
+      it 'created FTPAccount' do
+        expect { subject }.to change(FTPAccount, :count).by(1)
       end
     end
 
@@ -184,7 +184,7 @@ RSpec.describe 'FtpAccounts', type: :request do
         end
 
         it 'does not increase record' do
-          expect { subject }.not_to change(FtpAccount, :count)
+          expect { subject }.not_to change(FTPAccount, :count)
         end
 
         it 'change password_digest' do
@@ -217,7 +217,7 @@ RSpec.describe 'FtpAccounts', type: :request do
         end
 
         it 'does not increase record' do
-          expect { subject }.not_to change(FtpAccount, :count)
+          expect { subject }.not_to change(FTPAccount, :count)
         end
 
         it 'does not change password_digest' do
@@ -255,7 +255,7 @@ RSpec.describe 'FtpAccounts', type: :request do
         it_behaves_like 'HTTP 404 Not Found'
         it_behaves_like 'JSON API with /errors' do
           let(:errors) do
-            [{ title: 'Ftp account not found', status: 404 }]
+            [{ title: 'FTP account not found', status: 404 }]
           end
         end
       end
@@ -292,11 +292,11 @@ RSpec.describe 'FtpAccounts', type: :request do
         end
 
         it 'decrease record' do
-          expect { subject }.to change(FtpAccount, :count).by(-1)
+          expect { subject }.to change(FTPAccount, :count).by(-1)
         end
 
         it 'specified ftp account destroyed' do
-          expect { subject }.to change { FtpAccount.where(id: ftp_account.id).exists? }.to(false)
+          expect { subject }.to change { FTPAccount.where(id: ftp_account.id).exists? }.to(false)
         end
       end
 
@@ -309,7 +309,7 @@ RSpec.describe 'FtpAccounts', type: :request do
         end
 
         it 'does not decrease record' do
-          expect { subject }.not_to change(FtpAccount, :count)
+          expect { subject }.not_to change(FTPAccount, :count)
         end
       end
     end

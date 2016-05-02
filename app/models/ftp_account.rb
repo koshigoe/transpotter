@@ -20,7 +20,7 @@
 require 'digest/sha2'
 require 'base64'
 
-class FtpAccount < ApplicationRecord
+class FTPAccount < ApplicationRecord
   validates :password, presence: true, on: :create
   validates :uid, presence: true, numericality: { allow_blank: true }
   validates :gid, presence: true, numericality: { allow_blank: true }

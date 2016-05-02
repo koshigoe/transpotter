@@ -1,4 +1,4 @@
-class FtpAccountsController < ApplicationController
+class FTPAccountsController < ApplicationController
   before_action :authenticate
   before_action :validate_data_type, only: [:create, :update, :destroy]
   before_action :set_ftp_account, only: [:show, :update]
@@ -8,7 +8,7 @@ class FtpAccountsController < ApplicationController
   end
 
   def create
-    ftp_account = FtpAccount.create!(
+    ftp_account = FTPAccount.create!(
       password: create_params[:password],
       uid: Rails.configuration.x.ftp_account.default_uid,
       gid: Rails.configuration.x.ftp_account.default_gid,
@@ -23,14 +23,14 @@ class FtpAccountsController < ApplicationController
   end
 
   def destroy
-    FtpAccount.find_by(id: params.require(:data).require(:id))&.destroy
+    FTPAccount.find_by(id: params.require(:data).require(:id))&.destroy
     render json: { data: nil }
   end
 
   private
 
   def set_ftp_account
-    @ftp_account = FtpAccount.find(params[:id])
+    @ftp_account = FTPAccount.find(params[:id])
   end
 
   def create_params

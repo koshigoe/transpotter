@@ -19,7 +19,7 @@
 
 require 'rails_helper'
 
-RSpec.describe FtpAccount, :type => :model do
+RSpec.describe FTPAccount, :type => :model do
   describe 'validation' do
     subject { build(:ftp_account) }
 
@@ -51,7 +51,7 @@ RSpec.describe FtpAccount, :type => :model do
 
   describe '#before_create' do
     subject do
-      FtpAccount.create!(
+      FTPAccount.create!(
         password: 'password',
         uid: Rails.configuration.x.ftp_account.default_uid,
         gid: Rails.configuration.x.ftp_account.default_gid,
