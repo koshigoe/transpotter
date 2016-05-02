@@ -7,7 +7,7 @@ task :itamae do
     run_locally do
       with target_host: target, ssh_config: ssh_config do
         roles.each do |role|
-          execute :itamae, :ssh, "-F #{ssh_config}", "-h #{target}", "-y nodes/#{role}.yml", "roles/#{role}.rb"
+          execute :itamae, :ssh, "--ssh-config #{ssh_config}", "-h #{target}", "-y nodes/#{role}.yml", "roles/#{role}.rb"
         end
       end
     end
