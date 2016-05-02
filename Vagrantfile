@@ -75,6 +75,11 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
 
+  if defined?(Landrush)
+    config.landrush.enabled = true
+    config.landrush.host 'ftp.transpotter.vm', '192.168.33.100'
+  end
+
   config.vm.define 'ftp' do |ftp|
     ftp.vm.network 'private_network', ip: '192.168.33.100'
     ftp.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'

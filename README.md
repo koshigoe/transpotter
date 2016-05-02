@@ -6,6 +6,7 @@ Setup
 
 ```
 $ bundle install
+$ vagrant plugin install landrush
 $ vagrant up
 $ itamae-secrets newkey --base=./secret --method=aes-rando
 $ itamae-secrets set --base=./secret secret_key_base $(rake secret)
