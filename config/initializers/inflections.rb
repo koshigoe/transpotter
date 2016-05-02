@@ -16,6 +16,7 @@
 # end
 
 ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.acronym 'ProFTPD'
   inflect.acronym 'SFTP'
   inflect.acronym 'FTP'
 end
