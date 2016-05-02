@@ -84,7 +84,7 @@ Vagrant.configure(2) do |config|
   config.vm.define 'ftp' do |ftp|
     ftp.vm.network 'private_network', ip: '192.168.33.100'
     ftp.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
-    ftp.hostmanager.aliases = %w(ftp.transpotter.vm)
+    ftp.hostmanager.aliases = %w(ftp.transpotter.vm sftp.transpotter.vm)
   end
 
   config.vm.define 'db' do |db|
