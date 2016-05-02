@@ -6,8 +6,9 @@ Setup
 
 ```
 $ bundle install
-$ vagrant plugin install landrush
+$ vagrant plugin install vagrant-hostmanager
 $ vagrant up
+$ vagrant hostmanager
 $ itamae-secrets newkey --base=./secret --method=aes-rando
 $ itamae-secrets set --base=./secret secret_key_base $(rake secret)
 $ itamae-secrets set --base=./secret aws_access_key_id <AWS ACCESS KEY ID>
