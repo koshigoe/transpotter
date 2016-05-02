@@ -1,0 +1,2 @@
+class SFTPAccountsController < ApplicationController
+end
