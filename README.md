@@ -34,36 +34,36 @@ Authentication success!!
 $ bin/transpotter account create --type ftp
 Enter new account password:
 New account created!!
-+----------+---------------+
-| Key      | Value         |
-+----------+---------------+
-| username | ftp-12        |
-| uid      | 1000          |
-| gid      | 1000          |
-| homedir  | /home/vagrant |
-| shell    |               |
-+----------+---------------+
-$ ftp ftp-12@ftp.transpotter.vm
++----------+---------------------+
+| Key      | Value               |
++----------+---------------------+
+| username | ftp-3               |
+| uid      | 1000                |
+| gid      | 1000                |
+| homedir  | /home/vagrant/ftp-3 |
+| shell    |                     |
++----------+---------------------+
+$ ftp ftp-3@ftp.transpotter.vm
 Connected to ftp.transpotter.vm.
 220 FTP Server ready.
-331 Password required for ftp-12
+331 Password required for ftp-3
 Password:
-230 User ftp-12 logged in
+230 User ftp-3 logged in
 Remote system type is UNIX.
 Using binary mode to transfer files.
 ftp>
 $ bin/transpotter account create --type sftp
 Enter new account password:
 New account created!!
-+----------+---------------+
-| Key      | Value         |
-+----------+---------------+
-| username | sftp-3        |
-| uid      | 1000          |
-| gid      | 1000          |
-| homedir  | /home/vagrant |
-| shell    |               |
-+----------+---------------+
++----------+----------------------+
+| Key      | Value                |
++----------+----------------------+
+| username | sftp-3               |
+| uid      | 1000                 |
+| gid      | 1000                 |
+| homedir  | /home/vagrant/sftp-3 |
+| shell    |                      |
++----------+----------------------+
 $ sftp -P 2222 sftp-3@sftp.transpotter.vm
 sftp-3@sftp.transpotter.vm's password:
 Connected to sftp.transpotter.vm.
