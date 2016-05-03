@@ -10,5 +10,9 @@ proftpd:
   sql_default_homedir: /home/vagrant
   virtual_host_ftp: ftp.transpotter.vm
   virtual_host_sftp: sftp.transpotter.vm
+  masquerade_address: 192.168.33.100
+  passive_ports:
+    - 49152
+    - 65534
 transpotter:
   s3_bucket: test-transpotter
