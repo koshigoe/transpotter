@@ -1,3 +1,4 @@
+stage: vagrant
 proftpd:
   server_admin: root@localhost
   sql_auth_types: OpenSSL

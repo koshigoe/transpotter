@@ -1,5 +1,5 @@
 require 'itamae/secrets'
-node[:secrets] = Itamae::Secrets(File.join(__dir__, '../secret'))
+node[:secrets] = Itamae::Secrets(File.join(__dir__, "../.secrets/#{node[:stage]}"))
 
 include_recipe '../cookbooks/environment/default.rb'
 include_recipe '../cookbooks/ruby/default.rb'
