@@ -36,6 +36,8 @@ set :default_env, { path: '/usr/pgsql-9.5/bin:$PATH' }
 set :migration_role, :api
 set :puma_role, :api
 
+set :secrets_bucket, -> { ENV.fetch('SECRETS_BUCKET', 'transpotter-secrets') }
+
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
