@@ -95,5 +95,6 @@ Vagrant.configure(2) do |config|
   config.vm.define 'api' do |api|
     api.vm.network 'private_network', ip: '192.168.33.201'
     api.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
+    api.hostmanager.aliases = %w(api.transpotter.vm)
   end
 end
