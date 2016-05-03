@@ -7,7 +7,7 @@ proftpd:
     - postgres
   sql_default_uid: 1000
   sql_default_gid: 1000
-  sql_default_homedir: /home/vagrant/
+  sql_default_homedir: /home/vagrant
   virtual_host_ftp: ftp.transpotter.vm
   virtual_host_sftp: sftp.transpotter.vm
 transpotter:
