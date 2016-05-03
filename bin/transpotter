@@ -33,7 +33,7 @@ module Transpotter
       desc 'token USERNAME', 'Authenticate user.'
       option :stage, default: 'vagrant', type: :string
       def token(username)
-        password = ask('API password: ', echo: false)
+        password = ask('API password:', echo: false)
         puts ''
 
         response = Transpotter::API.api_connection(options[:stage]).post do |req|
@@ -68,7 +68,7 @@ module Transpotter
       option :stage, default: 'vagrant', type: :string
       option :type, required: true, type: :string, enum: %w(ftp sftp), aliases: :t
       def create
-        password = ask('Enter new account password: ', echo: false)
+        password = ask('Enter new account password:', echo: false)
         puts ''
 
         response = Transpotter::API.api_connection(options[:stage]).post do |req|
