@@ -17,6 +17,7 @@ $ cap vagrant itamae:secrets:upload
 $ cap vagrant itamae
 $ cap vagrant serverspec
 $ cap vagrant deploy
+$ rake db:create db:migrate db:seed
 ```
 
 FTP/SFTP Account
