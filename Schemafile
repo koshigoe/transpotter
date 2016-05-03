@@ -3,7 +3,7 @@ create_table "ftp_accounts", force: :cascade do |t|
   t.string   "password_digest",              null: false
   t.integer  "uid",                          null: false
   t.integer  "gid",                          null: false
-  t.string   "homedir",                      null: false
+  t.string   "homedir"
   t.string   "shell",           default: "", null: false
   t.datetime "created_at",                   null: false
   t.datetime "updated_at",                   null: false
@@ -14,7 +14,7 @@ create_table "sftp_accounts", force: :cascade do |t|
   t.string   "password_digest",              null: false
   t.integer  "uid",                          null: false
   t.integer  "gid",                          null: false
-  t.string   "homedir",                      null: false
+  t.string   "homedir"
   t.string   "shell",           default: "", null: false
   t.datetime "created_at",                   null: false
   t.datetime "updated_at",                   null: false

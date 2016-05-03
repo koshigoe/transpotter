@@ -11,7 +11,7 @@
 # **`password_digest`**  | `string`           | `not null`
 # **`uid`**              | `integer`          | `not null`
 # **`gid`**              | `integer`          | `not null`
-# **`homedir`**          | `string`           | `not null`
+# **`homedir`**          | `string`           |
 # **`shell`**            | `string`           | `default(""), not null`
 # **`created_at`**       | `datetime`         | `not null`
 # **`updated_at`**       | `datetime`         | `not null`
