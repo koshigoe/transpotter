@@ -17,10 +17,10 @@ shared_examples_for 'ProFTPD' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     it { should be_mode 640 }
-    its(:content) { should match '^ServerName\s+"Transpotter"' }
-    its(:content) { should match '^ServerAdmin\s+root@localhost' }
-    its(:content) { should match '^HiddenStores\s+on' }
-    its(:content) { should match '^DeleteAbortedStores\s+on' }
-    its(:content) { should match '^AllowOverwrite\s+no' }
+    its(:content) { should match '^\s*ServerName\s+"Transpotter"' }
+    its(:content) { should match '^\s*ServerAdmin\s+root@localhost' }
+    its(:content) { should match '^\s*HiddenStores\s+on' }
+    its(:content) { should match '^\s*DeleteAbortedStores\s+on' }
+    its(:content) { should match '^\s*AllowOverwrite\s+no' }
   end
 end
