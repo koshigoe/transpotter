@@ -19,7 +19,7 @@ shared_examples_for 'ProFTPDAccounts show' do
             username: account.username,
             uid: 1000,
             gid: 1000,
-            homedir: '/home/vagrant',
+            homedir: "/home/vagrant/#{account.username}",
             shell: ''
           }
         }
@@ -82,7 +82,7 @@ shared_examples_for 'ProFTPDAccounts create' do
             username: /\A#{scheme}-\d+\z/,
             uid: 1000,
             gid: 1000,
-            homedir: '/home/vagrant',
+            homedir: %r{\A/home/vagrant/#{scheme}-\d+\z},
             shell: ''
           }
         }
@@ -176,7 +176,7 @@ shared_examples_for 'ProFTPDAccounts update' do
               username: "#{scheme}-#{account.id}",
               uid: 1000,
               gid: 1000,
-              homedir: '/home/vagrant',
+              homedir: "/home/vagrant/#{scheme}-#{account.id}",
               shell: ''
             }
           }
@@ -209,7 +209,7 @@ shared_examples_for 'ProFTPDAccounts update' do
               username: "#{scheme}-#{account.id}",
               uid: 1000,
               gid: 1000,
-              homedir: '/home/vagrant',
+              homedir: "/home/vagrant/#{scheme}-#{account.id}",
               shell: ''
             }
           }

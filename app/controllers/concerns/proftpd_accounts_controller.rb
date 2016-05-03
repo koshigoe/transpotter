@@ -11,12 +11,7 @@ module ProFTPDAccountsController
     end
 
     def create
-      account = resource_class.create!(
-        password: create_params[:password],
-        uid: Rails.configuration.x.proftpd_account.default_uid,
-        gid: Rails.configuration.x.proftpd_account.default_gid,
-        homedir: Rails.configuration.x.proftpd_account.default_homedir,
-      )
+      account = resource_class.create!(password: create_params[:password])
       render json: account
     end
 
