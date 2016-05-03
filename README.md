@@ -19,8 +19,9 @@ $ itamae-secrets set --base=./.secrets/vagrant aws_secret_access_key $AWS_SECRET
 $ cap vagrant itamae:secrets:upload
 $ cap vagrant itamae
 $ cap vagrant serverspec
+$ rake db:create
 $ cap vagrant deploy
-$ rake db:create db:migrate db:seed
+$ rake db:seed
 ```
 
 FTP/SFTP Account
