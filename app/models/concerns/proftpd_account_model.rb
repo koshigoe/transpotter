@@ -6,7 +6,6 @@ module ProFTPDAccountModel
 
   included do
     validates :password, presence: true, on: :create
-    validates :homedir, presence: true
 
     attr_readonly :username
     attr_accessor :password

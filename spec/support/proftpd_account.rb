@@ -16,12 +16,7 @@ shared_examples_for 'ProFTPDAccount' do
 
   describe '#before_create' do
     subject do
-      described_class.create!(
-        password: 'password',
-        uid: Rails.configuration.x.proftpd_account.default_uid,
-        gid: Rails.configuration.x.proftpd_account.default_gid,
-        homedir: Rails.configuration.x.proftpd_account.default_homedir,
-      )
+      described_class.create!(password: 'password')
     end
 
     it 'is set hashed password to password_digest' do
@@ -31,20 +26,23 @@ shared_examples_for 'ProFTPDAccount' do
 
   describe '#after_create' do
     subject do
-      described_class.create!(
-        password: 'password',
-        uid: 1000,
-        gid: 1000,
-        homedir: '/home/vagrant',
-      )
+      described_class.create!(password: 'password')
     end
 
     it 'set username' do
       expect(subject.reload.username).to eq "#{described_class.name.underscore.split('_').first}-#{subject.id}"
     end
 
+    it 'set homedir' do
+      expect(subject.reload.homedir).to eq "/home/vagrant/#{described_class.name.underscore.split('_').first}-#{subject.id}"
+    end
+
     it 'is clean username' do
       expect(subject.username_changed?).to eq false
+    end
+
+    it 'is clean homedir' do
+      expect(subject.homedir_changed?).to eq false
     end
   end
 end

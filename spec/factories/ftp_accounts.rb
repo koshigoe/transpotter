@@ -20,7 +20,5 @@
 FactoryGirl.define do
   factory :ftp_account do
     password 'password'
-    homedir '/home/vagrant'
-    shell ''
   end
 end
