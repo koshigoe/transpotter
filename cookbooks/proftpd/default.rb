@@ -29,7 +29,6 @@ template '/etc/proftpd.conf' do
 end
 
 file '/etc/ssh/ssh_host_rsa_key' do
-  action :nothing
   mode '0600'
   owner 'root'
   group 'ssh_keys'
