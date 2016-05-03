@@ -5,8 +5,97 @@ ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
 require 'bundler/setup'
 require 'thor'
 require 'dotenv'
+require 'faraday'
+require 'faraday_middleware'
+require 'terminal-table'
 
 module Transpotter
+  module API
+    def self.api_base_url_for(stage)
+      case stage
+      when 'vagrant'
+        'http://api.transpotter.vm'
+      else
+        raise ArgumentError, "Unsupported stage: #{stage}"
+      end
+    end
+
+    def self.api_connection(stage)
+      Faraday.new(url: api_base_url_for(stage)) do |faraday|
+        faraday.token_auth File.read('.transpotter-token')
+        faraday.request :json
+        faraday.response :json, :content_type => /\bjson$/
+        faraday.adapter Faraday.default_adapter
+      end
+    end
+
+    class Authentication < Thor
+      desc 'token USERNAME', 'Authenticate user.'
+      option :stage, default: 'vagrant', type: :string
+      def token(username)
+        password = ask('API password: ', echo: false)
+        puts ''
+
+        response = Transpotter::API.api_connection(options[:stage]).post do |req|
+          req.url '/v1.0/authentications'
+          req.headers['Content-Type'] = 'application/json'
+          req.body = {
+            data: {
+              type: 'authentication',
+              attributes: {
+                username: username,
+                password: password,
+              }
+            }
+          }.to_json
+        end
+
+        case response.status
+        when 200
+          open('.transpotter-token', 'w') do |output|
+            output.write response.body.dig('data', 'attributes', 'token')
+          end
+          puts 'Authentication success!!'
+        else
+          puts 'Authentication failure!!'
+          raise StandardError, response.body
+        end
+      end
+    end
+
+    class Account < Thor
+      desc 'create', 'create account'
+      option :stage, default: 'vagrant', type: :string
+      option :type, required: true, type: :string, enum: %w(ftp sftp), aliases: :t
+      def create
+        password = ask('Enter new account password: ', echo: false)
+        puts ''
+
+        response = Transpotter::API.api_connection(options[:stage]).post do |req|
+          req.url "/v1.0/#{options[:type]}-accounts"
+          req.headers['Content-Type'] = 'application/json'
+          req.body = {
+            data: {
+              type: "#{options[:type]}Account",
+              attributes: {
+                password: password,
+              }
+            }
+          }.to_json
+        end
+
+        case response.status
+        when 200
+          puts 'New account created!!'
+          puts Terminal::Table.new headings: %w(Key Value), rows: response.body.dig('data', 'attributes').to_a
+        else
+          puts 'New account can not created!!'
+          raise StandardError, response.body
+        end
+      end
+    end
+  end
+
   class CLI < Thor
     include Thor::Actions
 
@@ -21,6 +110,12 @@ module Transpotter
       run "/usr/bin/aws s3 cp #{from} s3://#{ENV['TRANSPOTTER_S3_BUCKET']}/#{to}"
       remove_file from
     end
+
+    desc 'auth SUBCOMMAND ...ARGS', 'authenticate API'
+    subcommand 'auth', Transpotter::API::Authentication
+
+    desc 'account SUBCOMMAND ...ARGS', 'manage FTP account'
+    subcommand 'account', Transpotter::API::Account
   end
 end
 
