@@ -18,3 +18,24 @@ $ cap vagrant itamae
 $ cap vagrant serverspec
 $ cap vagrant deploy
 ```
+
+FTP/SFTP Account
+----
+
+```
+$ bin/transpotter auth token <API USER NAME>
+API password:
+Authentication success!!
+$ bin/transpotter account create --type ftp
+Enter new account password:
+New account created!!
++----------+---------------+
+| Key      | Value         |
++----------+---------------+
+| username | ftp-12        |
+| uid      | 1000          |
+| gid      | 1000          |
+| homedir  | /home/vagrant |
+| shell    |               |
++----------+---------------+
+```
