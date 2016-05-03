@@ -5,14 +5,17 @@ Setup
 ----
 
 ```
+$ export AWS_REGION=ap-northeast-1
+$ export AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID>
+$ export AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY>
 $ bundle install
 $ vagrant plugin install vagrant-hostmanager
 $ vagrant up
 $ vagrant hostmanager
 $ itamae-secrets newkey --base=./.secrets/vagrant --method=aes-rando
 $ itamae-secrets set --base=./.secrets/vagrant secret_key_base $(rake secret)
-$ itamae-secrets set --base=./.secrets/vagrant aws_access_key_id <AWS ACCESS KEY ID>
-$ itamae-secrets set --base=./.secrets/vagrant aws_secret_access_key <AWS SECRET ACCESS KEY>
+$ itamae-secrets set --base=./.secrets/vagrant aws_access_key_id $AWS_ACCESS_KEY
+$ itamae-secrets set --base=./.secrets/vagrant aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 $ cap vagrant itamae:secrets:upload
 $ cap vagrant itamae
 $ cap vagrant serverspec
