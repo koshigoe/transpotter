@@ -12,20 +12,6 @@ shared_examples_for 'ProFTPDAccount' do
         it { is_expected.to allow_value('').for(:password) }
       end
     end
-
-    describe 'uid' do
-      it { is_expected.to validate_presence_of(:uid) }
-      it { is_expected.to validate_numericality_of(:uid) }
-    end
-
-    describe 'gid' do
-      it { is_expected.to validate_presence_of(:gid) }
-      it { is_expected.to validate_numericality_of(:gid) }
-    end
-
-    describe 'homedir' do
-      it { is_expected.to validate_presence_of(:homedir) }
-    end
   end
 
   describe '#before_create' do

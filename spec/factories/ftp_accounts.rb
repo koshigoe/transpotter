@@ -20,8 +20,6 @@
 FactoryGirl.define do
   factory :ftp_account do
     password 'password'
-    uid 1000
-    gid 1000
     homedir '/home/vagrant'
     shell ''
   end

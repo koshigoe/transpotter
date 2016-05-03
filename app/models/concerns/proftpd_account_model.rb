@@ -6,8 +6,6 @@ module ProFTPDAccountModel
 
   included do
     validates :password, presence: true, on: :create
-    validates :uid, presence: true, numericality: { allow_blank: true }
-    validates :gid, presence: true, numericality: { allow_blank: true }
     validates :homedir, presence: true
 
     attr_readonly :username
@@ -15,13 +13,16 @@ module ProFTPDAccountModel
 
     before_save do
       self.password_digest = "{sha256}#{Base64.strict_encode64(Digest::SHA256.digest(password))}" if password.present?
+      self.uid = Rails.configuration.x.proftpd_account.default_uid
+      self.gid = Rails.configuration.x.proftpd_account.default_gid
     end
 
     after_create do
       scheme = self.class.name.underscore.split('_').first
-      self.class.where(id: id).update_all("username = CONCAT('#{scheme}-', id)")
       self.username = "#{scheme}-#{id}"
-      clear_attribute_changes([:username])
+      self.homedir = "#{Rails.configuration.x.proftpd_account.default_homedir}/#{username}"
+      self.class.where(id: id).update_all("username = '#{username}', homedir = '#{homedir}'")
+      clear_attribute_changes([:username, :homedir])
     end
   end
 end
