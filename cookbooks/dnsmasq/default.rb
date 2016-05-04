@@ -11,3 +11,11 @@ template '/etc/dnsmasq.d/address.conf' do
 
   notifies :restart, 'service[dnsmasq]'
 end
+
+remote_file '/etc/nsswitch.conf' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+
+  notifies :restart, 'service[dnsmasq]'
+end
