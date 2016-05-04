@@ -86,7 +86,7 @@ Vagrant.configure(2) do |config|
     api.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
   end
 
-  config.vm.define 'ftp' do |ftp|
+  config.vm.define 'ftp00' do |ftp|
     ftp.vm.network 'private_network', ip: '192.168.33.100'
     ftp.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
   end
