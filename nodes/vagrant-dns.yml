@@ -8,4 +8,4 @@ dnsmasq:
   hosts:
     - "192.168.33.100 ftp.transpotter.vm"
     - "192.168.33.100 sftp.transpotter.vm"
-    - "192.168.33.201 api.transpotter.vm"
+    - "192.168.33.80 api.transpotter.vm"

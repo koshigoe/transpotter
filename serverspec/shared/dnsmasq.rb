@@ -31,6 +31,6 @@ shared_examples_for 'dnsmasq' do
     it { should be_mode 644 }
     its(:content) { should match '^192.168.33.100 ftp.transpotter.vm$' }
     its(:content) { should match '^192.168.33.100 sftp.transpotter.vm$' }
-    its(:content) { should match '^192.168.33.201 api.transpotter.vm$' }
+    its(:content) { should match '^192.168.33.80 api.transpotter.vm$' }
   end
 end
