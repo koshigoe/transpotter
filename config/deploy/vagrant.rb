@@ -62,7 +62,7 @@
 
 set :rails_env, 'production'
 
-server 'dns', roles: %w(dns), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }, no_release: true
-server 'ftp', roles: %w(ftp), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }
-server 'db', roles: %w(db), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }, no_release: true
-server 'api', roles: %w(api), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }
+server '192.168.33.53',  roles: %w(dns), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }, no_release: true
+server '192.168.33.100', roles: %w(ftp), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }
+server '192.168.33.200', roles: %w(db),  user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }, no_release: true
+server '192.168.33.80',  roles: %w(api), user: 'vagrant', ssh_options: { config: '.ssh/vagrant' }
