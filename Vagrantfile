@@ -76,12 +76,6 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get install -y apache2
   # SHELL
 
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
-  config.hostmanager.manage_guest = true
-  config.hostmanager.ignore_private_ip = false
-  config.hostmanager.include_offline = true
-
   config.vm.define 'dns' do |dns|
     dns.vm.network 'private_network', ip: '192.168.33.53'
     dsn.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
@@ -90,7 +84,6 @@ Vagrant.configure(2) do |config|
   config.vm.define 'ftp' do |ftp|
     ftp.vm.network 'private_network', ip: '192.168.33.100'
     ftp.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
-    ftp.hostmanager.aliases = %w(ftp.transpotter.vm sftp.transpotter.vm)
   end
 
   config.vm.define 'db' do |db|
@@ -101,6 +94,5 @@ Vagrant.configure(2) do |config|
   config.vm.define 'api' do |api|
     api.vm.network 'private_network', ip: '192.168.33.201'
     api.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
-    api.hostmanager.aliases = %w(api.transpotter.vm)
   end
 end
