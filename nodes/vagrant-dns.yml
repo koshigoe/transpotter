@@ -1,0 +1,4 @@
+stage: vagrant
+dnsmasq:
+  address:
+    - /vm/127.0.0.1

@@ -82,6 +82,11 @@ Vagrant.configure(2) do |config|
   config.hostmanager.ignore_private_ip = false
   config.hostmanager.include_offline = true
 
+  config.vm.define 'dns' do |dns|
+    dns.vm.network 'private_network', ip: '192.168.33.53'
+    dsn.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
+  end
+
   config.vm.define 'ftp' do |ftp|
     ftp.vm.network 'private_network', ip: '192.168.33.100'
     ftp.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
