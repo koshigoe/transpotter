@@ -19,3 +19,11 @@ remote_file '/etc/nsswitch.conf' do
 
   notifies :restart, 'service[dnsmasq]'
 end
+
+template '/etc/hosts' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+
+  notifies :restart, 'service[dnsmasq]'
+end
