@@ -1,4 +1,7 @@
 stage: vagrant
+resolv:
+  - "nameserver 127.0.0.1"
+  - "nameserver 10.0.2.3"
 dnsmasq:
   address:
     - /vm/127.0.0.1
