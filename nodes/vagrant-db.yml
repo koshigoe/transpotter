@@ -1,2 +1,5 @@
 stage: vagrant
+resolv:
+  - "nameserver 192.168.33.53"
+  - "nameserver 10.0.2.3"
 postgresql:
