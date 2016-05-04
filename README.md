@@ -22,6 +22,7 @@ $ cap vagrant serverspec
 $ rake db:create
 $ cap vagrant deploy
 $ rake db:seed
+$ echo 'nameserver 192.168.33.53' | sudo tee /etc/resolver/vm
 ```
 
 FTP/SFTP Account
