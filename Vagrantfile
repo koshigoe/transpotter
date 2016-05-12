@@ -78,7 +78,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define 'dns' do |dns|
     dns.vm.network 'private_network', ip: '192.168.33.53'
-    dsn.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
+    dns.cache.scope = :box if Vagrant.has_plugin? 'vagrant-cachier'
   end
 
   config.vm.define 'api' do |api|
