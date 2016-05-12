@@ -24,7 +24,9 @@ module Transpotter
 
     def self.api_connection(stage)
       Faraday.new(url: api_base_url_for(stage)) do |faraday|
-        faraday.token_auth File.read('.transpotter-token')
+        if File.exists?('.transpotter-token')
+          faraday.token_auth File.read('.transpotter-token')
+        end
         faraday.request :json
         faraday.response :json, :content_type => /\bjson$/
         faraday.adapter Faraday.default_adapter
