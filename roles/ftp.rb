@@ -1,6 +1,7 @@
 require 'itamae/secrets'
 node[:secrets] = Itamae::Secrets(File.join(__dir__, "../.secrets/#{node[:stage]}"))
 
+include_recipe '../cookbooks/network-scripts/vagrant.rb'
 include_recipe '../cookbooks/environment/default.rb'
 include_recipe '../cookbooks/resolv/default.rb'
 include_recipe '../cookbooks/proftpd/default.rb'
