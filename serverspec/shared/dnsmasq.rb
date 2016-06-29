@@ -29,8 +29,8 @@ shared_examples_for 'dnsmasq' do
     it { should be_owned_by 'root' }
     it { should be_grouped_into 'root' }
     it { should be_mode 644 }
-    its(:content) { should match '^192.168.33.100 ftp.transpotter.vm sftp.transpotter.vm$' }
-    its(:content) { should match '^192.168.33.101 ftp.transpotter.vm sftp.transpotter.vm$' }
+    its(:content) { should match '^192.168.33.100 upload.transpotter.vm$' }
+    its(:content) { should match '^192.168.33.101 upload.transpotter.vm$' }
     its(:content) { should match '^192.168.33.80 api.transpotter.vm$' }
   end
 end

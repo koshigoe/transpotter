@@ -11,8 +11,8 @@ proftpd:
   sql_default_uid: 1000
   sql_default_gid: 1000
   sql_default_homedir: /home/vagrant
-  virtual_host_ftp: ftp.transpotter.vm
-  virtual_host_sftp: sftp.transpotter.vm
+  virtual_host_ftp: upload.transpotter.vm
+  virtual_host_sftp: upload.transpotter.vm
   masquerade_address: 192.168.33.100
   passive_ports:
     - 49152

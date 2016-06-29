@@ -6,6 +6,6 @@ dnsmasq:
   address:
     - /vm/127.0.0.1
   hosts:
-    - "192.168.33.100 ftp.transpotter.vm sftp.transpotter.vm"
-    - "192.168.33.101 ftp.transpotter.vm sftp.transpotter.vm"
+    - "192.168.33.100 upload.transpotter.vm"
+    - "192.168.33.101 upload.transpotter.vm"
     - "192.168.33.80 api.transpotter.vm"
